@@ -1,0 +1,44 @@
+---
+interface Props {
+  text?: string;
+  href?: string;
+}
+
+const { text = 'Quiero recibir la oferta exclusiva', href = '#form-section' } = Astro.props;
+---
+<a class="cta-btn" href={href}>
+  {text} <span class="cta-arrow">&#10095;</span>
+</a>
+
+<style>
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #F5A623;
+    color: #0B1A3A;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 18px 40px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+  .cta-btn:hover {
+    background: #ffb940;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(245, 166, 35, 0.35);
+  }
+  .cta-arrow {
+    font-size: 13px;
+    transition: transform 0.2s;
+  }
+  .cta-btn:hover .cta-arrow {
+    transform: translateX(3px);
+  }
+</style>

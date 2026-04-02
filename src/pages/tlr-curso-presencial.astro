@@ -1,0 +1,553 @@
+---
+import FunnelLayout from '../layouts/FunnelLayout.astro';
+import CTAButton from '../components/CTAButton.astro';
+import FormCard from '../components/FormCard.astro';
+import '../styles/global.css';
+
+const FONTS = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap';
+const N8N_WEBHOOK_URL = 'https://n8n-automation-dgz-n8n.hwzull.easypanel.host/webhook/test-webhook-form-web-html';
+---
+
+<FunnelLayout
+  title="Crea Tu Boletería Aérea — Curso Presencial en Milán · Te Lo Resuelvo Viajes"
+  description="Curso presencial en Milán para aprender a vender pasajes aéreos como un profesional. 3 etapas, herramientas reales y acompañamiento personalizado."
+  fonts={FONTS}
+>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <img
+      src="/images/funnel-tlr-crea-tu-boleteria2026/teloresuelvo-logo.webp"
+      alt="Te Lo Resuelvo Viajes"
+      class="hero-logo"
+      width="120"
+      height="120"
+    />
+    <p class="hero-badge">✈️ Curso presencial en Milán</p>
+    <h1 class="hero-title">
+      <span>CREA TU PROPIA BOLETERÍA AÉREA</span>
+      <em>Y EMPIEZA A VENDER PASAJES</em>
+      <span>COMO UN PROFESIONAL</span>
+    </h1>
+    <ul class="hero-checks">
+      <li><span class="check">✅</span> El percurso más completo en el marcado</li>
+      <li><span class="check">✅</span> acceso a herramientas reales de agencias</li>
+      <li><span class="check">✅</span> acompañamiento personalizado</li>
+    </ul>
+    <CTAButton />
+  </div>
+</section>
+
+<!-- ═══════════════ MÉTODO COMPLETO ═══════════════ -->
+<section class="method">
+  <div class="container">
+    <h2 class="section-title">🧠 UN MÉTODO COMPLETO</h2>
+    <p class="section-sub">
+      Este no es un curso más...<br />
+      Es un <strong>percorso completo de transformación</strong> en <span class="highlight">3 ETAPAS</span>:
+    </p>
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="method-img">
+          <img src="/images/funnel-tlr-crea-tu-boleteria2026/sesion-grupal-01.webp" alt="Sesión online" width="180" height="140" />
+        </div>
+        <h3>◆ 1. Sesión grupal online<br />(90 min)</h3>
+        <p>Para entender el negocio, mentalidad y oportunidades</p>
+      </div>
+      <div class="method-card">
+        <div class="method-img">
+          <img src="/images/funnel-tlr-crea-tu-boleteria2026/jornada-presencial-02.webp" alt="Jornada presencial" width="180" height="140" />
+        </div>
+        <h3>◆ 2. Jornada presencial<br />intensiva en Milán</h3>
+        <p>8 horas de Formación práctica con herramientas reales</p>
+      </div>
+      <div class="method-card">
+        <div class="method-img">
+          <img src="/images/funnel-tlr-crea-tu-boleteria2026/sesion-personalizada-03.webp" alt="Plan de acción" width="180" height="140" />
+        </div>
+        <h3>◆ 3. Sesión personalizada<br />con plan de accion</h3>
+        <p>Creamos contigo tu plan de acción para empezar a vender</p>
+      </div>
+    </div>
+    <div class="text-center" style="margin-top:40px;">
+      <CTAButton />
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ OPORTUNIDAD ═══════════════ -->
+<section class="opportunity">
+  <div class="container">
+    <h2 class="section-title section-title--light">✅ HOY TIENES UNA OPORTUNIDAD REAL</h2>
+    <div class="opportunity-intro">
+      <p>
+        Conviértete en agente de viajes independiente<br />
+        y aprende a <strong>vender pasajes aéreos desde cero</strong>, con un sistema probado.<br />
+        No teoría vacía.<br />
+        No videos sin seguimiento.
+      </p>
+      <p class="opportunity-cta-text">
+        👉 Aquí aprenderás con <strong>herramientas reales, procesos reales y acompañamiento real</strong>.
+      </p>
+    </div>
+    <div class="opportunity-grid">
+      <div class="opp-card opp-card--pain">
+        <h3>❌ Si hoy sientes que...</h3>
+        <ul>
+          <li><span class="x-mark">❌</span> Quieres emprender pero no sabes en qué</li>
+          <li><span class="x-mark">❌</span> Te gustaría tener un negocio propio sin invertir miles de euros</li>
+          <li><span class="x-mark">❌</span> Ves a otros vender viajes... pero no sabes cómo empezar</li>
+          <li><span class="x-mark">❌</span> Te interesa el mundo del turismo, pero nadie te ha enseñado de verdad</li>
+        </ul>
+        <p class="opp-verdict">👍 Este curso es para ti.</p>
+      </div>
+      <div class="opp-card opp-card--gain">
+        <h3>🚀 Al finalizar este curso <em>podrás:</em></h3>
+        <ul>
+          <li><span class="check-green">✅</span> Cotizar vuelos como una agencia profesional</li>
+          <li><span class="check-green">✅</span> Gestionar reservas reales paso a paso</li>
+          <li><span class="check-green">✅</span> Acceder a plataformas profesionales con tarifas exclusivas</li>
+          <li><span class="check-green">✅</span> Entender cómo funciona el negocio de la boletería aérea</li>
+          <li><span class="check-green">✅</span> Crear tu propia marca personal en el sector</li>
+          <li><span class="check-green">✅</span> Conseguir tus primeros clientes</li>
+          <li><span class="check-green">✅</span> Lanzar tu negocio desde cero</li>
+        </ul>
+        <p class="opp-verdict">
+          👍 En pocas palabras:<br />
+          <strong>pasar de cero a vender pasajes de avión.</strong>
+        </p>
+      </div>
+    </div>
+    <div class="text-center" style="margin-top:40px;">
+      <CTAButton />
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PARA TI SI... ═══════════════ -->
+<section class="for-you">
+  <div class="container">
+    <h2 class="section-title">🔥 ESTE CURSO ES PARA TI SI...</h2>
+    <ul class="for-you-checks">
+      <li>✔ Quieres emprender con bajo riesgo</li>
+      <li>✔ Buscas ingresos escalables</li>
+      <li>✔ Te interesa el mundo de los viajes</li>
+      <li>✔ Quieres una habilidad que te genere dinero</li>
+    </ul>
+    <div class="for-you-grid">
+      <div class="fy-card">
+        <div class="fy-img">
+          <img src="/images/funnel-tlr-crea-tu-boleteria2026/acceso-a-herramientas-01.webp" alt="Herramientas profesionales" width="200" height="160" />
+        </div>
+        <h3>🚀 ACCESO A HERRAMIENTAS PROFESIONALES</h3>
+        <p>Durante el curso:</p>
+        <ul>
+          <li>✔ Trabajarás con plataformas reales de agencias</li>
+          <li>✔ Aprenderás a buscar y cotizar vuelos en tiempo real</li>
+          <li>✔ Tendrás acceso a tarifas exclusivas</li>
+        </ul>
+        <p class="fy-note">👉 No es simulación...<br />Es el mundo real.</p>
+      </div>
+      <div class="fy-card">
+        <div class="fy-img">
+          <img src="/images/funnel-tlr-crea-tu-boleteria2026/aprenderas-a-traer-clientes02.webp" alt="Atraer clientes" width="200" height="160" />
+        </div>
+        <h3>🧲 APRENDERÁS A ATRAER CLIENTE</h3>
+        <p>Cómo encontrar clientes desde redes sociales</p>
+        <p>Cómo crear tu marca personal</p>
+        <p>Cómo estructurar tu negocio</p>
+        <p>Estrategias digitales para generar flujo constante de clientes</p>
+        <p class="fy-note">👉 Porque no basta saber vender...<br />Hay que saber <strong>cómo atraer clientes todos los días.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FORMULARIO ═══════════════ -->
+<section class="form-section">
+  <div class="container">
+    <FormCard
+      webhookUrl={N8N_WEBHOOK_URL}
+      pageName="tlr-curso-presencial"
+      buttonText="Quiero recibir la oferta exclusiva"
+      accent="#F5A623"
+    />
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="site-footer">
+  <div class="container">
+    <h2 class="footer-headline">🎯 OFERTA EXCLUSIVA</h2>
+    <p class="footer-sub">
+      Accede a un programa<br />
+      con formación, herramientas y acompañamiento real.
+    </p>
+    <img
+      src="/images/funnel-tlr-crea-tu-boleteria2026/teloresuelvo-logo.webp"
+      alt="Te Lo Resuelvo Viajes"
+      class="footer-logo"
+      width="90"
+      height="90"
+    />
+    <p class="footer-copy">© 2026 Te Lo Resuelvo Viajes - All rights reserved.</p>
+  </div>
+</footer>
+
+</FunnelLayout>
+
+<style>
+  /* ═══════════════════════════════════════════
+     TLR CURSO — THEME VARIABLES
+     ═══════════════════════════════════════════ */
+  :root {
+    --navy: #0B1A3A;
+    --navy-light: #0f2248;
+    --blue: #2194d3;
+    --gold: #F5A623;
+    --gold-hover: #ffb940;
+    --light-bg: #d5dbe4;
+    --light-bg-2: #e8edf3;
+    --white: #ffffff;
+    --text-dark: #1a1a2e;
+    --text-muted: #555;
+  }
+
+  /* ═══════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px;
+    background:
+      url('https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/ydtHJvMNnqFEtgYbdrvr/media/6847295b8b3fad755efbf303.png')
+      center / cover no-repeat;
+    color: var(--white);
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(11,26,58,0.82) 0%, rgba(11,26,58,0.92) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+  .hero-logo {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 24px;
+    border: 3px solid rgba(255,255,255,0.15);
+  }
+  .hero-badge {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+  }
+  .hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 900;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .hero-title em {
+    color: var(--gold);
+    font-style: italic;
+    display: block;
+  }
+  .hero-title span {
+    display: block;
+  }
+  .hero-checks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    font-size: 15px;
+    font-weight: 400;
+  }
+  .hero-checks li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-checks .check { font-size: 16px; }
+
+  /* ═══════════════════════════════════════════
+     MÉTODO COMPLETO
+     ═══════════════════════════════════════════ */
+  .method {
+    background: var(--light-bg);
+    padding: 80px 24px;
+  }
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(26px, 4vw, 44px);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .section-title--light {
+    color: var(--white);
+  }
+  .section-sub {
+    text-align: center;
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+  .highlight {
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 768px) {
+    .method-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  }
+  .method-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .method-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+  }
+  .method-img {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .method-img img {
+    max-height: 130px;
+    width: auto;
+    object-fit: contain;
+  }
+  .method-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 10px;
+    line-height: 1.35;
+  }
+  .method-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  /* ═══════════════════════════════════════════
+     OPORTUNIDAD
+     ═══════════════════════════════════════════ */
+  .opportunity {
+    background: var(--navy);
+    padding: 80px 24px;
+    color: var(--white);
+  }
+  .opportunity-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 48px;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+  .opportunity-intro strong {
+    font-weight: 600;
+  }
+  .opportunity-cta-text {
+    margin-top: 16px;
+  }
+  .opportunity-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  @media (max-width: 768px) {
+    .opportunity-grid { grid-template-columns: 1fr; }
+  }
+  .opp-card {
+    background: var(--white);
+    color: var(--text-dark);
+    border-radius: 16px;
+    padding: 36px 32px;
+  }
+  .opp-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+  .opp-card h3 em {
+    color: var(--blue);
+    font-style: italic;
+  }
+  .opp-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .opp-card li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .x-mark, .check-green { flex-shrink: 0; font-size: 14px; }
+  .opp-verdict {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+
+  /* ═══════════════════════════════════════════
+     PARA TI SI...
+     ═══════════════════════════════════════════ */
+  .for-you {
+    background: var(--light-bg-2);
+    padding: 80px 24px;
+  }
+  .for-you-checks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 48px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-dark);
+  }
+  .for-you-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  @media (max-width: 768px) {
+    .for-you-grid { grid-template-columns: 1fr; }
+  }
+  .fy-card {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 16px;
+    padding: 36px 32px;
+  }
+  .fy-img {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .fy-img img {
+    max-height: 140px;
+    width: auto;
+    object-fit: contain;
+  }
+  .fy-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    line-height: 1.35;
+  }
+  .fy-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+  .fy-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  .fy-note {
+    margin-top: 16px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* ═══════════════════════════════════════════
+     FORMULARIO SECTION
+     ═══════════════════════════════════════════ */
+  .form-section {
+    background: var(--light-bg);
+    padding: 80px 24px;
+  }
+
+  /* ═══════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════ */
+  .site-footer {
+    background: var(--navy);
+    padding: 64px 24px 40px;
+    text-align: center;
+    color: var(--white);
+  }
+  .footer-headline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(22px, 3.5vw, 36px);
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .footer-sub {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .footer-logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 16px;
+    opacity: 0.9;
+  }
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+  }
+</style>

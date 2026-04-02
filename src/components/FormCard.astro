@@ -1,0 +1,234 @@
+---
+interface Props {
+  webhookUrl?: string;
+  pageName?: string;
+  buttonText?: string;
+  accent?: string;
+}
+
+const {
+  webhookUrl = '',
+  pageName = 'funnel',
+  buttonText = 'Quiero recibir la oferta exclusiva',
+  accent = '#F5A623',
+} = Astro.props;
+---
+<div class="form-card" id="form-section">
+  <h2 class="form-title">Quiero recibir la oferta exclusiva</h2>
+  <p class="form-sub">Déjanos tus datos y un asesor te contactará por WhatsApp con todos los detalles del curso.</p>
+
+  <form id="funnel-form" data-webhook={webhookUrl} data-page={pageName}>
+    <div class="field">
+      <label for="field-nombre">Tu nombre</label>
+      <input id="field-nombre" name="nombre" type="text" placeholder="¿Cómo te llamas?" required autocomplete="name" />
+    </div>
+    <div class="field">
+      <label for="field-email">Email</label>
+      <input id="field-email" name="email" type="email" placeholder="tu@email.com" required autocomplete="email" />
+    </div>
+    <div class="field field--phone-iti">
+      <label for="field-telefono">WhatsApp</label>
+      <input id="field-telefono" name="telefono" type="tel" autocomplete="tel" required />
+    </div>
+    <button type="submit" class="btn-submit" style={`background:${accent};`}>
+      {buttonText} <span>&#10095;</span>
+    </button>
+    <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+  </form>
+
+  <p class="form-guarantee">🔒 Tus datos son privados. Solo te contactamos para darte información del curso.</p>
+</div>
+
+<style>
+  .form-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 48px 36px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    max-width: 480px;
+    margin: 0 auto;
+    scroll-margin-top: 40px;
+  }
+  .form-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #0B1A3A;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .form-sub {
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+  .field {
+    margin-bottom: 16px;
+  }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #444;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .field input {
+    width: 100%;
+    background: #f5f7fa;
+    border: 1.5px solid #dde2e8;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #1a1a2e;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .field input::placeholder { color: #aaa; }
+  .field input:focus {
+    border-color: #2194d3;
+    box-shadow: 0 0 0 3px rgba(33, 148, 211, 0.12);
+  }
+
+  .field--phone-iti :global(.iti) {
+    width: 100%;
+    display: block;
+  }
+  .field--phone-iti :global(.iti input.iti__tel-input) {
+    background: #f5f7fa;
+    border: 1.5px solid #dde2e8;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #1a1a2e;
+  }
+  .field--phone-iti :global(.iti input.iti__tel-input::placeholder) {
+    color: #aaa;
+  }
+  .field--phone-iti :global(.iti input.iti__tel-input:focus) {
+    border-color: #2194d3;
+    box-shadow: 0 0 0 3px rgba(33, 148, 211, 0.12);
+  }
+
+  .btn-submit {
+    width: 100%;
+    color: #0B1A3A;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 16px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: all 0.25s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .btn-submit:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+  }
+  .btn-submit:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+  }
+  .form-guarantee {
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+</style>
+
+<script is:inline>
+(function() {
+  document.getElementById('funnel-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = e.target;
+    var statusEl = document.getElementById('form-status');
+    var btn = form.querySelector('.btn-submit');
+    var webhookUrl = form.dataset.webhook;
+    var pageName = form.dataset.page;
+
+    if (!webhookUrl) {
+      statusEl.textContent = 'Webhook no configurado.';
+      statusEl.className = 'form-status error';
+      return;
+    }
+
+    var iti = window.funnelPhoneIti;
+    if (!iti) {
+      statusEl.textContent = 'No se cargó el selector de país. Recargá la página.';
+      statusEl.className = 'form-status error';
+      return;
+    }
+
+    var c = iti.getSelectedCountryData();
+    var rawDigits = form.telefono.value.replace(/\D/g, '');
+    var telefonoE164 = iti.getNumber();
+
+    if (!telefonoE164 && c && c.dialCode && rawDigits) {
+      telefonoE164 = '+' + c.dialCode + rawDigits;
+    }
+
+    if (!telefonoE164 || telefonoE164.replace(/\D/g, '').length < 8) {
+      statusEl.textContent = 'Ingresá tu número de WhatsApp.';
+      statusEl.className = 'form-status error';
+      return;
+    }
+
+    var payload = {
+      nombre: form.nombre.value.trim(),
+      email: form.email.value.trim(),
+      telefono: telefonoE164,
+      telefono_prefijo: c && c.dialCode ? ('+' + String(c.dialCode)) : '',
+      telefono_local: rawDigits,
+      telefono_pais_iso: c && c.iso2 ? String(c.iso2).toUpperCase() : '',
+      pagina: pageName,
+    };
+
+    var prevLabel = btn.innerHTML;
+    btn.disabled = true;
+    btn.textContent = 'Enviando…';
+    statusEl.textContent = '';
+    statusEl.className = 'form-status';
+
+    fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+      .then(function(res) {
+        if (!res.ok) throw new Error(String(res.status));
+        return res.text();
+      })
+      .then(function() {
+        statusEl.textContent = '¡Listo! Te contactamos por WhatsApp en breve.';
+        statusEl.className = 'form-status success';
+        form.nombre.value = '';
+        form.email.value = '';
+        if (window.funnelPhoneIti) {
+          window.funnelPhoneIti.setNumber('');
+          window.funnelPhoneIti.setCountry('it');
+        }
+      })
+      .catch(function() {
+        statusEl.textContent = 'No se pudo enviar. Probá de nuevo.';
+        statusEl.className = 'form-status error';
+      })
+      .finally(function() {
+        btn.disabled = false;
+        btn.innerHTML = prevLabel;
+      });
+  });
+})();
+</script>

@@ -1,0 +1,42 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  fonts?: string;
+}
+
+const { title, description = '', fonts = '' } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <link rel="icon" type="image/webp" href="/favicon.webp" />
+  {description && <meta name="description" content={description} />}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  {fonts && <link href={fonts} rel="stylesheet" />}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/css/intlTelInput.css" />
+</head>
+<body>
+  <slot />
+  <script is:inline src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/js/intlTelInput.min.js"></script>
+  <script is:inline>
+    (function initPhone() {
+      var el = document.getElementById('field-telefono');
+      if (!el || typeof window.intlTelInput !== 'function') return;
+      window.funnelPhoneIti = window.intlTelInput(el, {
+        initialCountry: 'it',
+        preferredCountries: ['it','es','ar','mx','co','de','fr','gb','us','ve','cl','pe','pt','nl','be','ch','ec','bo','py','uy'],
+        separateDialCode: true,
+        strictMode: true,
+        loadUtils: function() {
+          return import('https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/js/utils.js');
+        },
+      });
+    })();
+  </script>
+</body>
+</html>

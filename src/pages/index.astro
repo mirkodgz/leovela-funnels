@@ -1,0 +1,48 @@
+---
+import FunnelLayout from '../layouts/FunnelLayout.astro';
+import '../styles/global.css';
+
+const FONTS = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap';
+---
+
+<FunnelLayout title="Funnels — Leo Vela / Te Lo Resuelvo" fonts={FONTS}>
+  <main class="index-page">
+    <h1>Funnels</h1>
+    <p>Selecciona un funnel:</p>
+    <ul>
+      <li><a href="/tlr-curso-presencial">Te Lo Resuelvo Viajes — Curso Presencial Milán</a></li>
+    </ul>
+  </main>
+</FunnelLayout>
+
+<style>
+  .index-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 80px 24px;
+    font-family: 'Inter', sans-serif;
+  }
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  p { color: #666; margin-bottom: 24px; }
+  ul { list-style: none; }
+  li { margin-bottom: 12px; }
+  a {
+    display: inline-block;
+    color: #2194d3;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 12px 20px;
+    border: 2px solid #2194d3;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+  a:hover {
+    background: #2194d3;
+    color: #fff;
+  }
+</style>
