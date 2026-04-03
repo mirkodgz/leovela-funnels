@@ -18,17 +18,28 @@ const {
   <p class="form-sub">Déjanos tus datos y un asesor te contactará por WhatsApp con todos los detalles del curso.</p>
 
   <form id="funnel-form" data-webhook={webhookUrl} data-page={pageName}>
+    <!-- Honeypot: no rellenar. Bots suelen completar todos los campos. -->
+    <div class="hp-field" aria-hidden="true">
+      <label for="field-fax">Fax</label>
+      <input id="field-fax" name="fax" type="text" tabindex="-1" autocomplete="off" />
+    </div>
     <div class="field">
       <label for="field-nombre">Tu nombre</label>
       <input id="field-nombre" name="nombre" type="text" placeholder="¿Cómo te llamas?" required autocomplete="name" />
     </div>
     <div class="field">
       <label for="field-email">Email</label>
-      <input id="field-email" name="email" type="email" placeholder="tu@email.com" required autocomplete="email" />
+      <input id="field-email" name="email" type="email" placeholder="tu@email.com (opcional)" autocomplete="email" />
     </div>
     <div class="field field--phone-iti">
       <label for="field-telefono">WhatsApp</label>
       <input id="field-telefono" name="telefono" type="tel" autocomplete="tel" required />
+    </div>
+    <div class="field field--checkbox">
+      <label class="checkbox-label">
+        <input id="field-privacy" name="privacy" type="checkbox" required />
+        <span>He leído y acepto la política de privacidad de Impakkkto y autorizo al equipo de marketing a contactarme para ofrecerme información sobre servicios y promociones.</span>
+      </label>
     </div>
     <button type="submit" class="btn-submit" style={`background:${accent};`}>
       {buttonText} <span>&#10095;</span>
@@ -49,6 +60,12 @@ const {
     margin: 0 auto;
     scroll-margin-top: 40px;
   }
+  @media (max-width: 768px) {
+    .form-card {
+      padding: 36px 10px;
+      border-radius: 12px;
+    }
+  }
   .form-title {
     font-family: 'Montserrat', sans-serif;
     font-size: 22px;
@@ -64,6 +81,19 @@ const {
     margin-bottom: 28px;
     line-height: 1.5;
   }
+  .hp-field {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    pointer-events: none;
+  }
+
   .field {
     margin-bottom: 16px;
   }
@@ -114,6 +144,30 @@ const {
     box-shadow: 0 0 0 3px rgba(33, 148, 211, 0.12);
   }
 
+  .field--checkbox {
+    margin-bottom: 20px;
+  }
+  .field .checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #666;
+    text-transform: none;
+    letter-spacing: normal;
+    margin-bottom: 0;
+  }
+  .checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    margin-top: 1px;
+    accent-color: #2194d3;
+    cursor: pointer;
+  }
   .btn-submit {
     width: 100%;
     color: #0B1A3A;
@@ -165,6 +219,15 @@ const {
       return;
     }
 
+    var faxTrap = form.querySelector('[name="fax"]');
+    var faxVal = faxTrap && faxTrap.value ? faxTrap.value.replace(/\s/g, '') : '';
+    if (faxVal.length > 0) {
+      statusEl.textContent = '¡Listo! Te contactamos por WhatsApp en breve.';
+      statusEl.className = 'form-status success';
+      faxTrap.value = '';
+      return;
+    }
+
     var iti = window.funnelPhoneIti;
     if (!iti) {
       statusEl.textContent = 'No se cargó el selector de país. Recargá la página.';
@@ -193,6 +256,8 @@ const {
       telefono_prefijo: c && c.dialCode ? ('+' + String(c.dialCode)) : '',
       telefono_local: rawDigits,
       telefono_pais_iso: c && c.iso2 ? String(c.iso2).toUpperCase() : '',
+      acepta_privacidad: form.privacy.checked,
+      fax: '',
       pagina: pageName,
     };
 
@@ -216,6 +281,8 @@ const {
         statusEl.className = 'form-status success';
         form.nombre.value = '';
         form.email.value = '';
+        form.privacy.checked = false;
+        if (faxTrap) faxTrap.value = '';
         if (window.funnelPhoneIti) {
           window.funnelPhoneIti.setNumber('');
           window.funnelPhoneIti.setCountry('it');
