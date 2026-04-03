@@ -1,3 +1,22 @@
 ---
-return Astro.redirect('/tlr-curso-presencial');
+// Respaldo si el host no aplica redirects HTTP (p. ej. astro preview).
+// En Vercel, vercel.json envía 308 y este archivo casi no se sirve en "/".
 ---
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="0;url=/tlr-curso-presencial" />
+    <title>Te Lo Resuelvo Viajes</title>
+    <link rel="canonical" href="/tlr-curso-presencial" />
+    <script is:inline>
+      window.location.replace('/tlr-curso-presencial');
+    </script>
+  </head>
+  <body>
+    <p style="margin: 2rem; font-family: system-ui, sans-serif">
+      <a href="/tlr-curso-presencial">Ir al curso presencial</a>
+    </p>
+  </body>
+</html>

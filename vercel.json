@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/tlr-curso-presencial",
+      "permanent": true
+    }
+  ]
+}
